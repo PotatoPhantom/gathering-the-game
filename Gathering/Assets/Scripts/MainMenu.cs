@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public Panel connectPanel;
+    public GameObject connectPanel;
 
     public static string address;
     public static string port;
@@ -17,5 +17,15 @@ public class MainMenu : MonoBehaviour
     public void Join()
     {
         NetworkManager.Singleton.StartClient();
+    }
+
+    public void HidePanel()
+    {
+        connectPanel.SetActive(false);
+    }
+
+    public void TogglePanel()
+    {
+        connectPanel.SetActive(!connectPanel.activeSelf);
     }
 }
