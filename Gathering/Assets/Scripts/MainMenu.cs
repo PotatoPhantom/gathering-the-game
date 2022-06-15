@@ -1,4 +1,5 @@
 using Unity.Netcode;
+using Unity.Netcode.Transports.UNET;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,9 +7,6 @@ public class MainMenu : MonoBehaviour
 {
     public Canvas canvas;
     public GameObject connectPanel;
-
-    public static string address;
-    public static string port;
 
     public void Host()
     {
@@ -29,11 +27,12 @@ public class MainMenu : MonoBehaviour
 
     public void onAddressChange(string input)
     {
-        address = input;
+        NetworkManager.Singleton.GetComponent<UNetTransport>().ConnectAddress = input;
     }
 
     public void onPortChange(string input)
     {
-        port = input;
+        if (int.TryParse(input, out int port))
+            NetworkManager.Singleton.GetComponent<UNetTransport>().ConnectPort = port;
     }
 }
