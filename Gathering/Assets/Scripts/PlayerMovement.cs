@@ -17,9 +17,9 @@ public class PlayerMovement : NetworkBehaviour
 
     private void Start()
     {
-        if (!IsClient)
+        if (!IsLocalPlayer)
         {
-            playerCamera.enabled = false;
+            playerCamera.gameObject.SetActive(false);
         } else
         {
             Cursor.visible = false;
@@ -29,7 +29,7 @@ public class PlayerMovement : NetworkBehaviour
 
     void Update()
     {
-        if (IsClient)
+        if (IsLocalPlayer)
         {
             keyInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
             mouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
