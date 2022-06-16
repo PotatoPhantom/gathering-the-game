@@ -22,7 +22,8 @@ public class PlayerMovement : NetworkBehaviour
             playerCamera.enabled = false;
         } else
         {
-            
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
